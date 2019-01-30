@@ -36,7 +36,7 @@ export class Routes {
 
         app.route("/contact")
             .get((req: Request, res: Response, next: NextFunction) => {
-                if (req.query.key !== process.env.PERSONAL_KEY) {
+                if (req.query.key !== "abe97787ac28b755ad2857a93f44721ee067ded2") {
                     res.status(401).send("Key incorrect");
                 } else {
                     next();
