@@ -34,7 +34,7 @@ class Routes {
             .post(this.contactController.addNewContact);
         app.route("/contact")
             .get((req, res, next) => {
-            if (req.query.key !== process.env.PERSONAL_KEY) {
+            if (req.query.key !== "abe97787ac28b755ad2857a93f44721ee067ded2") {
                 res.status(401).send("Key incorrect");
             }
             else {

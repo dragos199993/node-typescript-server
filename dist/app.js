@@ -7,7 +7,7 @@ const routes_1 = require("./routes/routes");
 class App {
     constructor() {
         this.routes = new routes_1.Routes();
-        this.mongoUrl = process.env.MONGO_URI;
+        this.mongoUrl = "mongodb://admin:admin12@ds036617.mlab.com:36617/deploy-test";
         this.app = express();
         this.config();
         this.routes.routes(this.app);
