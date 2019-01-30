@@ -6,7 +6,7 @@ import { Routes } from "./routes/routes";
 class App {
     public app: express.Application;
     public routes: Routes = new Routes();
-    public mongoUrl: string = "mongodb://admin:admin12@ds036617.mlab.com:36617/deploy-test";
+    public mongoUrl: string = process.env.MONGODB_URI;
     constructor() {
         this.app = express();
         this.config();
