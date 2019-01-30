@@ -1,11 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const path = require("path");
 const crmController_1 = require("../controllers/crmController");
 class Routes {
     constructor() {
         this.contactController = new crmController_1.ContactController();
     }
     routes(app) {
+        app.route("*", (req, res) => {
+            res.sendFile(path.join(__dirname, "..", "client/build/index.html"));
+        });
         app.route("/")
             .get((req, res) => {
             res.status(200).send({

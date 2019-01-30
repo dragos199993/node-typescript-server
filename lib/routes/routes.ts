@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import * as path from "path";
 import { ContactController } from "../controllers/crmController";
 
 export class Routes {
@@ -6,6 +7,9 @@ export class Routes {
     public contactController: ContactController = new ContactController();
 
     public routes(app): void {
+        app.route("*", (req: Request, res: Response) => {
+            res.sendFile(path.join(__dirname, "..", "client/build/index.html"));
+        });
         app.route("/")
             .get((req: Request, res: Response) => {
                 res.status(200).send({
