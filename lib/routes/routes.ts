@@ -33,5 +33,13 @@ export class Routes {
 
         app.route("/contact")
             .post(this.contactController.addNewContact);
+
+        app.route("/contact")
+            .get(this.contactController.getContacts);
+
+        app.route("/contact/:contactId")
+            .get(this.contactController.getContactWithID)
+            .put(this.contactController.updateContact)
+            .delete(this.contactController.deleteContact);
     }
 }
