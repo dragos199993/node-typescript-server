@@ -20,6 +20,7 @@ class App {
     }
 
     private mongoSetup(): void {
+        require("mongoose").Promise = global.Promise;
         mongoose.connect(this.mongoUrl, {
             useNewUrlParser: true
         });

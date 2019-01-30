@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { ContactController } from "../controllers/crmController";
 
 export class Routes {
@@ -35,7 +35,13 @@ export class Routes {
             .post(this.contactController.addNewContact);
 
         app.route("/contact")
-            .get(this.contactController.getContacts);
+            .get((req: Request, res: Response, next: NextFunction) => {
+                if (req.query.key !== process.env.PERSONAL_KEY) {
+                    res.status(401).send("Key incorrect");
+                } else {
+                    next();
+                }
+            }, this.contactController.getContacts);
 
         app.route("/contact/:contactId")
             .get(this.contactController.getContactWithID)
