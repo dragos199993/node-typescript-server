@@ -1,1 +1,1 @@
-export const baseURL: string = 'https://node-typescript-react.herokuapp.com/';
+export const baseURL: string = process.env.baseURL || 'http://localhost:5000';
