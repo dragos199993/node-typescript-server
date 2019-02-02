@@ -1,3 +1,3 @@
 export const apiPaths: {[key: string]: string} = {
-    contacts: '/contact'
+    contacts: '/api/contact'
 };
