@@ -7,31 +7,12 @@ export class Routes {
     public contactController: ContactController = new ContactController();
 
     public routes(app): void {
-        app.route("/api/")
-            .get((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: "GET request succesfully"
-                });
-            });
-        app.route("/api/")
-            .post((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: "POST request succesfully"
-                });
-            });
-        app.route("/api/")
-            .put((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: "PUT request succesfully"
-                });
-            });
-        app.route("/api/")
-            .delete((req: Request, res: Response) => {
-                res.status(200).send({
-                    message: "DELETE request succesfully"
-                });
-            });
 
+        app.route("*", (req: Request, res: Response) => {
+            res.sendFile(path.join(__dirname, "..", "client/build/index.html"));
+            console.log(path.join(__dirname, "..", "client/build/index.html"));
+        });
+        
         app.route("/api/contact")
             .post(this.contactController.addNewContact);
 
@@ -48,9 +29,5 @@ export class Routes {
             .get(this.contactController.getContactWithID)
             .put(this.contactController.updateContact)
             .delete(this.contactController.deleteContact);
-
-        app.route("*", (req: Request, res: Response) => {
-            res.sendFile(path.join(__dirname, "..", "client/build/index.html"));
-        });
     }
 }
